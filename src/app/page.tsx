@@ -585,76 +585,107 @@ function Home() {
   return (
     <>
       <Toaster />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold mb-6 text-center">FullStackAI Roadmap</h1>
+      <div
+        className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-100 to-pink-50 text-gray-800"
+        style={{ fontFamily: "'Inter', sans-serif" }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {/* Motivational Banner */}
+          <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 text-white rounded-lg p-6 shadow-lg mb-8">
+            <h1 className="text-4xl font-bold text-center">
+              🚀 Welcome to Your FullStackAI Journey!
+            </h1>
+            <p className="text-center mt-2 text-lg">
+              Learn, grow, and achieve your goals one step at a time. 🌟
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Overall Progress</CardTitle>
-              <CardDescription>Track your journey</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Progress value={overallProgress} />
-              {overallProgress.toFixed(1)}% Complete
-            </CardContent>
-          </Card>
+          {/* Progress and Streak Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <CardTitle>Overall Progress</CardTitle>
+                <CardDescription>Track your journey</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Progress
+                  value={overallProgress}
+                  className="transition-all duration-500 ease-in-out"
+                />
+                <p className="text-center mt-2 text-lg font-semibold">
+                  {overallProgress.toFixed(1)}% Complete 🎯
+                </p>
+              </CardContent>
+            </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Daily Streak</CardTitle>
-              <CardDescription>Keep the momentum going</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-col items-center">
-                <Badge
-                  variant="accent"
-                  className="text-2xl px-6 py-3 rounded-full flex items-center gap-2 bg-yellow-400/90 text-orange-900 shadow-lg"
-                  style={{ fontWeight: 700, fontSize: "1.5rem" }}
-                >
-                  <span role="img" aria-label="fire" className="text-3xl animate-bounce">🔥</span>
-                  {streak} day{streak === 1 ? "" : "s"}
-                </Badge>
-                <span className="mt-2 text-sm text-orange-700 font-semibold">
-                  {streak > 0
-                    ? "You're on fire! Keep your streak alive! 🚀"
-                    : "Start your streak today!"}
-                </span>
-              </div>
-            </CardContent>
-          </Card>
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <CardTitle>Daily Streak</CardTitle>
+                <CardDescription>Keep the momentum going</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-col items-center">
+                  <Badge
+                    variant="accent"
+                    className="text-2xl px-6 py-3 rounded-full flex items-center gap-2 bg-yellow-400/90 text-orange-900 shadow-lg animate-pulse"
+                    style={{ fontWeight: 700, fontSize: "1.5rem" }}
+                  >
+                    <span role="img" aria-label="fire" className="text-3xl">
+                      🔥
+                    </span>
+                    {streak} day{streak === 1 ? "" : "s"}
+                  </Badge>
+                  <span className="mt-2 text-sm text-orange-700 font-semibold">
+                    {streak > 0
+                      ? "You're on fire! Keep your streak alive! 🚀"
+                      : "Start your streak today!"}
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Authentication</CardTitle>
-              <CardDescription>Manage your profile</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {session ? (
-                <div className="flex items-center space-x-4">
-                  <div>
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <CardTitle>Authentication</CardTitle>
+                <CardDescription>Manage your profile</CardDescription>
+              </CardHeader>
+              <CardContent>
+                {session ? (
+                  <div className="flex items-center space-x-4">
                     <Avatar>
                       <AvatarImage src={session?.picture} alt={session?.name} />
                       <AvatarFallback>{session?.name?.charAt(0)}</AvatarFallback>
                     </Avatar>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium leading-none">{session?.name}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {session?.email}
-                    </p>
-                  </div>
-                  <div>
+                    <div>
+                      <p className="text-sm font-medium leading-none">
+                        {session?.name}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {session?.email}
+                      </p>
+                    </div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                        <Button
+                          variant="ghost"
+                          className="relative h-8 w-8 rounded-full"
+                        >
                           <Avatar className="h-8 w-8">
-                            <AvatarImage src={session?.picture} alt={session?.name} />
-                            <AvatarFallback>{session?.name?.charAt(0)}</AvatarFallback>
+                            <AvatarImage
+                              src={session?.picture}
+                              alt={session?.name}
+                            />
+                            <AvatarFallback>
+                              {session?.name?.charAt(0)}
+                            </AvatarFallback>
                           </Avatar>
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56" align="end" forceMount>
+                      <DropdownMenuContent
+                        className="w-56"
+                        align="end"
+                        forceMount
+                      >
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem onClick={handleSignOut}>
@@ -663,71 +694,110 @@ function Home() {
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
-                </div>
-              ) : (
-                <Button onClick={() => signIn()}>Sign In with Google</Button>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {Object.entries(roadmapData).map(([topic, data]) => (
-            <Card key={topic}>
-              <CardHeader>
-                <div className="flex justify-between items-center">
-                  <div>
-                    {data.title}
-                  </div>
-                  <div>
-                    <Badge variant="outline">{calculateTopicProgress(topic).toFixed(1)}% Complete</Badge>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value={topic}>
-                    <AccordionTrigger>
-                      Subtopics
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      {isLoading ? (
-                        <div className="flex items-center justify-center">
-                          Loading subtopics...
-                        </div>
-                      ) : (
-                        <div>
-                          {Object.entries(data.subtopics).map(([subtopic, units]) => (
-                            <div key={subtopic} className="mb-4">
-                              <h3 className="text-lg font-semibold">{subtopic}</h3>
-                              <ul className="list-none pl-4">
-                                {units.map(unit => (
-                                  <li key={unit.title} className="flex items-center space-x-2">
-                                    <Checkbox
-                                      id={`${subtopic}-${unit.title}`}
-                                      checked={progress[`${subtopic}-${unit.title}`] || false}
-                                      onCheckedChange={() => {
-                                        toggleSubtopic(topic, subtopic, unit.title);
-                                        incrementStreak(); // Increment streak on checkbox change
-                                      }}
-                                      className="mr-2"
-                                    />
-                                    <label htmlFor={`${subtopic}-${unit.title}`} className="text-sm">
-                                      {unit.title} ({unit.explanation})
-                                    </label>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+                ) : (
+                  <Button
+                    onClick={() => signIn()}
+                    className="bg-blue-500 hover:bg-blue-600 text-white"
+                  >
+                    Sign In with Google
+                  </Button>
+                )}
               </CardContent>
             </Card>
-          ))}
+          </div>
+
+          {/* Learning Pillars */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {Object.entries(roadmapData).map(([topic, data]) => (
+              <Card
+                key={topic}
+                className="hover:shadow-lg transition-shadow border border-gray-200 rounded-lg"
+              >
+                <CardHeader>
+                  <div className="flex justify-between items-center">
+                    <div className="text-xl font-semibold">{data.title}</div>
+                    <Badge
+                      variant="outline"
+                      className="bg-purple-100 text-purple-800"
+                    >
+                      {calculateTopicProgress(topic).toFixed(1)}% Complete
+                    </Badge>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <Accordion
+                    type="single"
+                    collapsible
+                    className="w-full"
+                  >
+                    <AccordionItem value={topic}>
+                      <AccordionTrigger className="text-lg font-medium">
+                        Subtopics 📚
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        {isLoading ? (
+                          <div className="flex items-center justify-center">
+                            Loading subtopics...
+                          </div>
+                        ) : (
+                          <div>
+                            {Object.entries(data.subtopics).map(
+                              ([subtopic, units]) => (
+                                <div
+                                  key={subtopic}
+                                  className="mb-4 border-b pb-4"
+                                >
+                                  <h3 className="text-lg font-semibold text-blue-600">
+                                    {subtopic}
+                                  </h3>
+                                  <ul className="list-none pl-4">
+                                    {units.map((unit) => (
+                                      <li
+                                        key={unit.title}
+                                        className="flex items-center space-x-2"
+                                      >
+                                        <Checkbox
+                                          id={`${subtopic}-${unit.title}`}
+                                          checked={
+                                            progress[
+                                              `${subtopic}-${unit.title}`
+                                            ] || false
+                                          }
+                                          onCheckedChange={() => {
+                                            toggleSubtopic(
+                                              topic,
+                                              subtopic,
+                                              unit.title
+                                            );
+                                            incrementStreak(); // Increment streak on checkbox change
+                                          }}
+                                          className="mr-2"
+                                        />
+                                        <label
+                                          htmlFor={`${subtopic}-${unit.title}`}
+                                          className="text-sm"
+                                        >
+                                          {unit.title} (
+                                          <span className="text-gray-500">
+                                            {unit.explanation}
+                                          </span>
+                                          )
+                                        </label>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )
+                            )}
+                          </div>
+                        )}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </>
