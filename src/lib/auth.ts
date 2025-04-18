@@ -1,65 +1,61 @@
-'use client';
+'use server';
 
-import { useState, useEffect } from 'react';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { google } from 'googleapis';
 
-// Define types for user
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  imageUrl: string;
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+
+const oauth2Client = new google.auth.OAuth2(
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  process.env.NEXTAUTH_URL + '/api/auth/callback/google'
+);
+
+async function getGoogleAuthURL() {
+  const scopes = [
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'https://www.googleapis.com/auth/userinfo.email',
+  ];
+
+  const url = oauth2Client.generateAuthUrl({
+    access_type: 'offline',
+    response_type: 'code',
+    scope: scopes,
+  });
+
+  return url;
 }
 
-// Custom hook to get the user
-export function useUser() {
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    // Check if user data exists in localStorage
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
-
-  return { user };
+export async function signIn() {
+  const googleAuthURL = await getGoogleAuthURL();
+  redirect(googleAuthURL);
 }
 
-// Custom hook for sign in
-export function useSignIn() {
-  const signIn = async () => {
-    return new Promise<void>((resolve) => {
-      // Simulate authentication with dummy user data
-      // Generate a unique user ID (for demonstration purposes)
-      const userId = Math.random().toString(36).substring(2, 15);
+export async function signOut() {
+  cookies().delete('user');
+  redirect('/');
+}
 
-      const dummyUser: User = {
-        id: userId,
-        name: 'John Doe',
-        email: 'john.doe@example.com',
-        imageUrl: 'https://picsum.photos/48/48', // Placeholder image
-      };
+export async function getSession() {
+  const user = cookies().get('user')?.value;
+  if (!user) return null;
+  return JSON.parse(user);
+}
 
-      // Store user data in localStorage
-      localStorage.setItem('user', JSON.stringify(dummyUser));
+export async function getUserProfile(code: string) {
+  const { tokens } = await oauth2Client.getToken(code);
+  oauth2Client.setCredentials(tokens);
 
-      resolve();
-    });
+  const oauth2 = google.oauth2({
+    auth: oauth2Client,
+    version: 'v2',
+  });
+  const userInfo = await oauth2.userinfo.get();
+
+  return {
+    ...userInfo.data,
+    tokens,
   };
-
-  return { signIn };
-}
-
-// Custom hook for sign out
-export function useSignOut() {
-  const signOut = async () => {
-    return new Promise<void>((resolve) => {
-      // Remove user data from localStorage
-      localStorage.removeItem('user');
-
-      resolve();
-    });
-  };
-
-  return { signOut };
 }

@@ -13,7 +13,7 @@ import { useToast } from "@/hooks/use-toast"; // Import useToast
 import { Checkbox } from "@/components/ui/checkbox";
 
 // Authentication
-import { useUser, useSignIn, useSignOut } from "../lib/auth";
+import {signIn, signOut, getSession} from "@/lib/auth";
 
 const roadmapData = {
   Programming: {
@@ -412,56 +412,47 @@ export default function Home() {
   const { toast } = useToast();
 
   // Authentication
-  const { user } = useUser();
-  const { signIn } = useSignIn();
-  const { signOut } = useSignOut();
+  const [session, setSession] = useState<any>(null);
 
-  const handleSignIn = async () => {
-    await signIn().then(() => {
-      // After successful sign-in, retrieve and set the streak from localStorage
-      const storedStreak = localStorage.getItem(`streak-${user?.id}`);
+  useEffect(() => {
+    const fetchSession = async () => {
+      const userSession = await getSession();
+      setSession(userSession);
+    };
+
+    fetchSession();
+  }, []);
+
+  useEffect(() => {
+    if (session?.email) {
+      const storedProgress = localStorage.getItem(`progress-${session.email}`);
+      if (storedProgress) {
+        setProgress(JSON.parse(storedProgress));
+      }
+
+      const storedStreak = localStorage.getItem(`streak-${session.email}`);
       if (storedStreak) {
         setStreak(parseInt(storedStreak));
       }
-      const storedProgress = localStorage.getItem(`progress-${user?.id}`);
-        if (storedProgress) {
-          setProgress(JSON.parse(storedProgress));
-        }
-    });
-  };
-  const handleSignOut = async () => {
-    await signOut();
-    setProgress({}); // Reset progress on sign out
-    setStreak(0); // Reset streak on sign out
-  };
+
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+  }, [session]);
+
 
   useEffect(() => {
-    if (user) {
-        const storedProgress = localStorage.getItem(`progress-${user.id}`);
-        if (storedProgress) {
-          setProgress(JSON.parse(storedProgress));
-        }
-
-        const storedStreak = localStorage.getItem(`streak-${user.id}`);
-        if (storedStreak) {
-          setStreak(parseInt(storedStreak));
-        }
-
-        setIsLoading(false);
+    if (session?.email && !isLoading) {
+      localStorage.setItem(`progress-${session.email}`, JSON.stringify(progress));
     }
-  }, [user]);
+  }, [progress, isLoading, session]);
 
   useEffect(() => {
-    if (user && !isLoading) {
-      localStorage.setItem(`progress-${user.id}`, JSON.stringify(progress));
+    if (session?.email) {
+      localStorage.setItem(`streak-${session.email}`, streak.toString());
     }
-  }, [progress, isLoading, user]);
-
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem(`streak-${user.id}`, streak.toString());
-    }
-  }, [streak, user]);
+  }, [streak, session]);
 
   const toggleSubtopic = (topic: string, subtopic: string, unit: string) => {
     setProgress(prevProgress => {
@@ -503,6 +494,11 @@ export default function Home() {
     setStreak(prevStreak => prevStreak + 1);
   };
 
+  const handleSignOut = async () => {
+    await signOut();
+    setSession(null);
+  };
+
   const overallProgress = calculateOverallProgress();
 
   return (
@@ -539,18 +535,18 @@ export default function Home() {
               <CardDescription>Manage your profile</CardDescription>
             </CardHeader>
             <CardContent>
-              {user ? (
+              {session ? (
                 <div className="flex items-center space-x-4">
                   <div>
                     <Avatar>
-                      <AvatarImage src={user?.imageUrl} alt={user?.name} />
-                      <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
+                      <AvatarImage src={session?.picture} alt={session?.name} />
+                      <AvatarFallback>{session?.name?.charAt(0)}</AvatarFallback>
                     </Avatar>
                   </div>
                   <div>
-                    <p className="text-sm font-medium leading-none">{user?.name}</p>
+                    <p className="text-sm font-medium leading-none">{session?.name}</p>
                     <p className="text-sm text-muted-foreground">
-                      {user?.email}
+                      {session?.email}
                     </p>
                   </div>
                   <div>
@@ -558,8 +554,8 @@ export default function Home() {
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                           <Avatar className="h-8 w-8">
-                            <AvatarImage src={user?.imageUrl} alt={user?.name} />
-                            <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
+                            <AvatarImage src={session?.picture} alt={session?.name} />
+                            <AvatarFallback>{session?.name?.charAt(0)}</AvatarFallback>
                           </Avatar>
                         </Button>
                       </DropdownMenuTrigger>
@@ -574,7 +570,7 @@ export default function Home() {
                   </div>
                 </div>
               ) : (
-                <Button onClick={handleSignIn}>Sign In</Button>
+                <Button onClick={() => signIn()}>Sign In with Google</Button>
               )}
             </CardContent>
           </Card>
