@@ -1,22 +1,16 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Toaster } from "@/components/ui/toaster";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { useToast } from "@/hooks/use-toast"
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
+import { useToast } from "@/hooks/use-toast"; // Import useToast
 
 // Authentication
 import { useUser, useSignIn, useSignOut } from "../lib/auth";
@@ -386,108 +380,103 @@ export default function Home() {
       <Toaster />
       <h1 className="text-3xl font-bold mb-6 text-center">FullStackAI Roadmap</h1>
 
-      
-        
-          
-            
-              
-                
-                  Daily Streak: {streak} days
-                
-              
-            
-          
-        
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Daily Streak</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Badge variant="secondary">Daily Streak: {streak} days</Badge>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>Authentication</CardHeader>
+            <CardContent>
+              {user ? (
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center space-x-4">
+                    <Avatar>
+                      <AvatarImage src={user?.imageUrl} alt={user?.name} />
+                      <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <div>{user?.name}</div>
+                      <div className="text-sm text-muted-foreground">{user?.email}</div>
+                    </div>
+                  </div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                        <Avatar className="h-8 w-8">
+                          <AvatarImage src={user?.imageUrl} alt={user?.name} />
+                          <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
+                        </Avatar>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56" align="end" forceMount>
+                      <DropdownMenuItem onClick={handleSignOut}>
+                        Sign out
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              ) : (
+                <Button onClick={handleSignIn}>Sign In</Button>
+              )}
+            </CardContent>
+          </Card>
+        </div>
 
-        
-          {user ? (
-            
-              
-                
-                  
-                    
-                      {user?.name}
-                      
-                        {user?.email}
-                      
-                    
-                  
-                  
-                    
-                      Sign out
-                    
-                  
-                
-              
-            
-          ) : (
-            
-              
-                Sign In
-              
-            
-          )}
-        
-      
-      
-      
-        {Object.entries(roadmapData).map(([pillar, data]) => (
-          
-            
-              
-                {pillar}
-                
+        <div className="grid grid-cols-1 gap-6">
+          {Object.entries(roadmapData).map(([pillar, data]) => (
+            <Card key={pillar}>
+              <CardHeader>
+                <CardTitle>{pillar}</CardTitle>
+                <CardDescription>
+                  <Progress value={progress[pillar] ? progress[pillar] : 0} />
                   {progress[pillar] ? progress[pillar]?.toFixed(1) : 0}% Complete
-                
-              
-              
-                
-                  
-                    {data.title}
-                  
-                  
-                    {isLoading ? (
-                      
-                        Loading subtopics...
-                      
-                    ) : (
-                      
-                        {data.subtopics?.map((subtopicGroup, groupIndex) => (
-                          
-                            
-                              {subtopicGroup.title}
-                              
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Accordion type="single" collapsible className="w-full">
+                  <AccordionItem value={pillar}>
+                    <AccordionTrigger>
+                      {data.title}
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      {isLoading ? (
+                        <div>Loading subtopics...</div>
+                      ) : (
+                        <div>
+                          {data.subtopics?.map((subtopicGroup, groupIndex) => (
+                            <div key={subtopicGroup.title} className="mb-4">
+                              <h3 className="text-lg font-semibold mb-2">{subtopicGroup.title}</h3>
+                              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                                 {subtopicGroup.subtopics?.map(subtopic => (
-                                  
-                                    
-                                      
-                                        
-                                          <input
-                                            type="checkbox"
-                                            checked={completedSubtopics(pillar).has(subtopic)}
-                                            onChange={() => toggleSubtopic(pillar, groupIndex, subtopic)}
-                                            className="mr-2"
-                                          />
-                                          {subtopic}
-                                        
-                                      
-                                    
-                                  
+                                  <div key={subtopic} className="flex items-center">
+                                    <input
+                                      type="checkbox"
+                                      checked={completedSubtopics(pillar).has(subtopic)}
+                                      onChange={() => toggleSubtopic(pillar, groupIndex, subtopic)}
+                                      className="mr-2"
+                                    />
+                                    {subtopic}
+                                  </div>
                                 ))}
-                              
-                            
-                          
-                        ))}
-                      
-                    )}
-                  
-                
-              
-            
-          
-        ))}
-      
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
     </>
   );
 }
-
