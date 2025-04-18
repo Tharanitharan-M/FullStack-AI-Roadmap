@@ -405,7 +405,7 @@ const roadmapData = {
   },
 };
 
-export default function Home() {
+function Home() {
   const [progress, setProgress] = useState<{ [key: string]: boolean }>({});
   const [streak, setStreak] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -491,7 +491,13 @@ export default function Home() {
   };
 
   const incrementStreak = () => {
-    setStreak(prevStreak => prevStreak + 1);
+    const today = new Date().toLocaleDateString();
+    const lastLogin = localStorage.getItem(`lastLogin-${session.email}`);
+
+    if (lastLogin !== today) {
+      setStreak(prevStreak => prevStreak + 1);
+      localStorage.setItem(`lastLogin-${session.email}`, today);
+    }
   };
 
   const handleSignOut = async () => {
@@ -505,7 +511,7 @@ export default function Home() {
     <>
       <Toaster />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">FullStackAI Roadmap</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center">FullStackAI Roadmap</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <Card>
@@ -638,3 +644,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;
