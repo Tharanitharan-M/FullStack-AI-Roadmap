@@ -15,8 +15,8 @@ import { useToast } from "@/hooks/use-toast"; // Import useToast
 import { useUser, useSignIn, useSignOut } from "../lib/auth";
 
 const roadmapData = {
-  April: {
-    title: "Core Programming (Python, JS/TS), Git, HTML/CSS, React basics",
+  Programming: {
+    title: "Core Programming (Python + TypeScript)",
     subtopics: [
       "Python syntax, control flow, data types",
       "Functions and OOP (classes, inheritance)",
@@ -24,80 +24,77 @@ const roadmapData = {
       "Error handling",
       "TypeScript basics (types, interfaces, enums)",
       "Functional programming (pure functions, immutability)",
-      "Version Control: Basic commands: add, commit, push, pull",
-      "Branching: Creating, merging, and resolving conflicts",
-      "HTML5 Structure and Semantics: Semantic HTML elements",
-      "CSS3 Styling and Layout: Selectors, properties, values",
-      "Responsive Design: Media queries, Flexbox and Grid",
-      "JSX: Writing React components",
-      "Components: Props and State",
-      "Handling Events: Event listeners and handlers",
     ],
   },
-  May: {
-    title: "Full Stack Dev (Next.js, Flask, FastAPI, Node.js, MongoDB, PostgreSQL)",
+  Frontend: {
+    title: "Frontend Development",
     subtopics: [
-      "SSR and SEO: Server-Side Rendering basics, SEO optimization techniques",
-      "File Routing: Defining routes based on the file system",
-      "API Routes: Creating backend endpoints using Next.js",
-      "Routing and Views: Handling web requests with Flask",
-      "Templates and Jinja: Generating dynamic HTML with Jinja templates",
-      "Pydantic Validation: Ensuring data integrity with Pydantic models",
-      "Express Framework: Building server-side applications with Express",
-      "Documents and CRUD: Managing data in MongoDB",
-      "Relational DB Design: Structuring data in PostgreSQL",
-      "SQL Queries and Joins: Retrieving data efficiently with SQL",
+      "HTML5, CSS3, responsive design",
+      "JavaScript (DOM, events, fetch, ES6+)",
+      "React (hooks, state, props, router)",
+      "Next.js (SSR, file routing, API routes)",
+      "Tailwind CSS or Chakra UI",
+      "Component architecture and UI state management",
     ],
   },
-  June: {
-    title: "DevOps (Docker, CI/CD), SaaS Auth, Cloud (Vercel, AWS), Project #1 Launch",
+  Backend: {
+    title: "Backend Development",
     subtopics: [
-      "Docker: Containerizing Apps: Packaging applications for portability",
-      "Docker: Compose: Managing multi-container applications",
-      "CI/CD: GitHub Actions: Automating builds and deployments",
-      "JWT: Securing APIs",
-      "OAuth2: Implementing third-party authentication",
-      "Vercel Deployment: Hosting frontend applications",
-      "AWS EC2 Basics: Virtual servers in the cloud",
-      "AWS Lambda: Serverless functions",
-      "AWS S3: Object storage",
-      "Deploying full-stack application: Making project live",
+      "Node.js + Express (routing, middleware, APIs)",
+      "Flask (Python microframework)",
+      "FastAPI (async APIs, validation with Pydantic)",
+      "Django (ORM, built-in admin, auth)",
+      "REST API design, authentication (JWT, OAuth)",
+      "Error handling, pagination, rate limiting",
     ],
   },
-  July: {
-    title: "LLMs, LangChain, Agents, RAG, MCP, Vector DBs, Project #2 (AI SaaS)",
+  Databases: {
+    title: "Databases",
     subtopics: [
-      "Tokens and Embeddings: Understanding language models",
-      "Transformers: Core of modern LLMs",
-      "Chains and Agents: Orchestrating LLMs",
-      "Retrieval: Improving LLM performance",
-      "Model-Context-Persona: Designing AI systems",
-      "FAISS: Similarity search in vector databases",
-      "Pinecone: Managed vector database",
-      "Chroma: Open-source vector database",
-      "AI-powered SaaS application: Developing innovative products",
+      "PostgreSQL (DDL, DML, joins, indexes, ACID)",
+      "MongoDB (documents, CRUD, aggregation)",
+      "ORMs: Prisma (Node), SQLAlchemy (Flask/FastAPI), Django ORM",
     ],
   },
-  August: {
-    title: "CS Fundamentals, DSA, System Design, Resume/Portfolio, Apply to",
+  DevOps: {
+    title: "DevOps & Cloud",
     subtopics: [
-      "OS: Processes: Understanding how processes work",
-      "OS: Threads: Understanding how threads work",
-      "OS: Memory: Understanding how memory management works",
-      "Networking: HTTP/HTTPS: Understanding web communication",
-      "Networking: DNS: Resolving domain names",
-      "Networking: TCP/IP: Foundation of the Internet",
-      "Networking: WebSockets: Real-time communication",
-      "DBMS: ACID: Ensuring database consistency",
-      "DBMS: Indexing: Improving database query performance",
-      "Arrays: Working with basic arrays",
-      "Linked Lists: Working with basic linked lists",
-      "Hash Maps: Efficient data retrieval",
-      "Caching: Speeding up data access",
-      "Load Balancing: Distributing traffic",
-      "Queues: Managing asynchronous tasks",
-      "Resume/Portfolio",
-      "Apply to positions",
+      "Git + GitHub (branches, PRs, merges)",
+      "Docker (build, run, compose)",
+      "CI/CD (GitHub Actions, basic YAML setup)",
+      "Hosting/Deployment: Vercel (frontend), Render/Heroku (backend), AWS EC2, Lambda, S3",
+    ],
+  },
+  SaaS: {
+    title: "SaaS Architecture & Security",
+    subtopics: [
+      "JWT & OAuth2 authentication",
+      "Role-Based Access Control (RBAC)",
+      "Stripe billing integration (subscriptions, webhooks)",
+      "OWASP Top 10 (XSS, CSRF, SQLi, etc.)",
+      "Input validation & sanitation",
+      "Analytics (PostHog, Mixpanel)",
+    ],
+  },
+  GenAI: {
+    title: "LLMs & GenAI",
+    subtopics: [
+      "Tokens, embeddings, attention, transformers",
+      "Prompt engineering (zero-shot, few-shot, chain-of-thought)",
+      "OpenAI API, Gemini, Ollama basics",
+      "LangChain and LlamaIndex (chains, agents, memory)",
+      "Retrieval-Augmented Generation (RAG)",
+      "Hugging Face Transformers",
+    ],
+  },
+  DSA: {
+    title: "DSA + System Design",
+    subtopics: [
+      "Arrays, linked lists, hash maps",
+      "Trees (binary, BST, trie), graphs (BFS, DFS)",
+      "Algorithms: sorting, recursion, DP, sliding window",
+      "Leetcode practice (NeetCode 150 / Blind 75)",
+      "System design patterns (cache, load balancer, queue)",
     ],
   },
 };
@@ -160,7 +157,7 @@ export default function Home() {
     }
   }, [streak, user]);
 
-  const toggleSubtopic = (month: string, subtopic: string) => {
+  const toggleSubtopic = (topic: string, subtopic: string) => {
     setProgress(prevProgress => {
       const newProgress = {
         ...prevProgress,
@@ -170,8 +167,14 @@ export default function Home() {
     });
   };
 
+  const calculateTopicProgress = (topic: string): number => {
+    const totalSubtopics = roadmapData[topic].subtopics.length;
+    const completedSubtopics = roadmapData[topic].subtopics.filter(subtopic => progress[subtopic]).length;
+    return totalSubtopics > 0 ? (completedSubtopics / totalSubtopics) * 100 : 0;
+  };
+
   const calculateOverallProgress = (): number => {
-    const totalSubtopics = Object.values(roadmapData).reduce((count, month) => count + month.subtopics.length, 0);
+    const totalSubtopics = Object.values(roadmapData).reduce((count, topic) => count + topic.subtopics.length, 0);
     const completedSubtopics = Object.keys(progress).filter(subtopic => progress[subtopic]).length;
     return totalSubtopics > 0 ? (completedSubtopics / totalSubtopics) * 100 : 0;
   };
@@ -207,7 +210,9 @@ export default function Home() {
             </CardContent>
           </Card>
           <Card>
-            <CardHeader>Authentication</CardHeader>
+            <CardHeader>
+              <CardTitle>Authentication</CardTitle>
+            </CardHeader>
             <CardContent>
               {user ? (
                 <div className="flex justify-between items-center">
@@ -221,22 +226,9 @@ export default function Home() {
                       <div className="text-sm text-muted-foreground">{user?.email}</div>
                     </div>
                   </div>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                        <Avatar className="h-8 w-8">
-                          <AvatarImage src={user?.imageUrl} alt={user?.name} />
-                          <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
-                        </Avatar>
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56" align="end" forceMount>
-                      <DropdownMenuItem onClick={handleSignOut}>
-                        Sign out
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                  <Button variant="outline" size="sm" onClick={handleSignOut}>
+                    Sign Out
+                  </Button>
                 </div>
               ) : (
                 <Button onClick={handleSignIn}>Sign In</Button>
@@ -246,17 +238,22 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 gap-6">
-          {Object.entries(roadmapData).map(([month, data]) => (
-            <Card key={month}>
+          {Object.entries(roadmapData).map(([topic, data]) => (
+            <Card key={topic}>
               <CardHeader>
-                <CardTitle>{month}</CardTitle>
+                <div className="flex justify-between items-center">
+                  <CardTitle>{data.title}</CardTitle>
+                  <Badge variant="outline">
+                    {calculateTopicProgress(topic).toFixed(1)}% Complete
+                  </Badge>
+                </div>
                 <CardDescription>
                   {data.title}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value={month}>
+                  <AccordionItem value={topic}>
                     <AccordionTrigger>
                       Subtopics
                     </AccordionTrigger>
@@ -270,7 +267,7 @@ export default function Home() {
                               <input
                                 type="checkbox"
                                 checked={progress[subtopic] || false}
-                                onChange={() => toggleSubtopic(month, subtopic)}
+                                onChange={() => toggleSubtopic(topic, subtopic)}
                                 className="mr-2"
                               />
                               {subtopic}
