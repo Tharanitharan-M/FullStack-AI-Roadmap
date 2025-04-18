@@ -540,21 +540,20 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               {user ? (
-                
-                  
+                <div className="flex items-center space-x-4">
+                  <div>
                     <Avatar>
                       <AvatarImage src={user?.imageUrl} alt={user?.name} />
                       <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
                     </Avatar>
-                    
-                      
-                      {user?.name}
-                      
-                        {user?.email}
-                      
-                    
-                  
-                  
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium leading-none">{user?.name}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {user?.email}
+                    </p>
+                  </div>
+                  <div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
@@ -572,8 +571,8 @@ export default function Home() {
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
-                  
-                
+                  </div>
+                </div>
               ) : (
                 <Button onClick={handleSignIn}>Sign In</Button>
               )}
@@ -585,15 +584,14 @@ export default function Home() {
           {Object.entries(roadmapData).map(([topic, data]) => (
             <Card key={topic}>
               <CardHeader>
-                
-                  
+                <div className="flex justify-between items-center">
+                  <div>
                     {data.title}
-                    
-                      {calculateTopicProgress(topic).toFixed(1)}% Complete
-                    
-                  
-                  {data.title}
-                
+                  </div>
+                  <div>
+                    <Badge variant="outline">{calculateTopicProgress(topic).toFixed(1)}% Complete</Badge>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
                 <Accordion type="single" collapsible className="w-full">
@@ -603,42 +601,35 @@ export default function Home() {
                     </AccordionTrigger>
                     <AccordionContent>
                       {isLoading ? (
-                        
+                        <div className="flex items-center justify-center">
                           Loading subtopics...
-                        
+                        </div>
                       ) : (
-                        
+                        <div>
                           {Object.entries(data.subtopics).map(([subtopic, units]) => (
-                            
-                              
-                                
-                                  {subtopic}
-                                
-                                
-                                  {units.map(unit => (
-                                    
-                                      
-                                        <Checkbox
-                                          id={`${subtopic}-${unit.title}`}
-                                          checked={progress[`${subtopic}-${unit.title}`] || false}
-                                          onCheckedChange={() => {
-                                            toggleSubtopic(topic, subtopic, unit.title);
-                                            incrementStreak(); // Increment streak on checkbox change
-                                          }}
-                                          className="mr-2"
-                                        />
-                                        
-                                          {unit.title}
-                                        
-                                        ({unit.explanation})
-                                      
-                                    
-                                  ))}
-                                
-                              
-                            
+                            <div key={subtopic} className="mb-4">
+                              <h3 className="text-lg font-semibold">{subtopic}</h3>
+                              <ul className="list-none pl-4">
+                                {units.map(unit => (
+                                  <li key={unit.title} className="flex items-center space-x-2">
+                                    <Checkbox
+                                      id={`${subtopic}-${unit.title}`}
+                                      checked={progress[`${subtopic}-${unit.title}`] || false}
+                                      onCheckedChange={() => {
+                                        toggleSubtopic(topic, subtopic, unit.title);
+                                        incrementStreak(); // Increment streak on checkbox change
+                                      }}
+                                      className="mr-2"
+                                    />
+                                    <label htmlFor={`${subtopic}-${unit.title}`} className="text-sm">
+                                      {unit.title} ({unit.explanation})
+                                    </label>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                           ))}
-                        
+                        </div>
                       )}
                     </AccordionContent>
                   </AccordionItem>
