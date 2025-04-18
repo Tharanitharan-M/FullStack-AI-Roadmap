@@ -403,6 +403,79 @@ const roadmapData = {
       ],
     },
   },
+  MachineLearning: {
+    title: "🧠 Machine Learning & Deep Learning Fundamentals",
+    subtopics: {
+      "Supervised and Unsupervised Learning": [
+        {
+          title: "Supervised Learning",
+          explanation: "Learn how models are trained on labeled data (e.g., regression, classification)."
+        },
+        {
+          title: "Unsupervised Learning",
+          explanation: "Explore clustering and dimensionality reduction techniques using unlabeled data."
+        }
+      ],
+      "Neural Networks and Deep Learning": [
+        {
+          title: "Neural Network Basics",
+          explanation: "Understand the structure of neurons, weights, activations, and layers."
+        },
+        {
+          title: "Forward and Backward Propagation",
+          explanation: "Learn how data flows through a model and how gradients are used to update weights."
+        },
+        {
+          title: "CNNs (Convolutional Neural Networks)",
+          explanation: "Used in image-related tasks like classification and detection."
+        },
+        {
+          title: "RNNs and LSTMs",
+          explanation: "Ideal for time-series or sequence data like text or speech."
+        },
+        {
+          title: "Transfer Learning",
+          explanation: "Fine-tune pre-trained models for new tasks quickly."
+        }
+      ],
+      "Model Evaluation and Validation": [
+        {
+          title: "Training vs Testing vs Validation",
+          explanation: "Understand dataset splits and their role in model accuracy."
+        },
+        {
+          title: "Overfitting and Underfitting",
+          explanation: "Learn to diagnose and resolve model generalization issues."
+        },
+        {
+          title: "Cross-Validation",
+          explanation: "Improve model robustness using k-fold validation techniques."
+        },
+        {
+          title: "Evaluation Metrics",
+          explanation: "Use accuracy, precision, recall, F1 score, and confusion matrices to assess performance."
+        }
+      ],
+      "ML Frameworks": [
+        {
+          title: "TensorFlow Basics",
+          explanation: "Learn how to build and train models using TensorFlow."
+        },
+        {
+          title: "PyTorch Basics",
+          explanation: "Use dynamic graphs and tensor operations to create neural nets."
+        },
+        {
+          title: "Keras API (in TensorFlow)",
+          explanation: "Simplifies building and training models with high-level abstractions."
+        },
+        {
+          title: "Model Deployment (basic)",
+          explanation: "Explore options for serving trained models (Flask, FastAPI, TF Serving)."
+        }
+      ]
+    }
+  },
 };
 
 function Home() {
