@@ -30,8 +30,11 @@ export function useSignIn() {
   const signIn = async () => {
     return new Promise<void>((resolve) => {
       // Simulate authentication with dummy user data
+      // Generate a unique user ID (for demonstration purposes)
+      const userId = Math.random().toString(36).substring(2, 15);
+
       const dummyUser: User = {
-        id: '123',
+        id: userId,
         name: 'John Doe',
         email: 'john.doe@example.com',
         imageUrl: 'https://picsum.photos/48/48', // Placeholder image
