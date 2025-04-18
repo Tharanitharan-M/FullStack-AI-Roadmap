@@ -1,3 +1,6 @@
+// This file contains the main Home component for the FullStack AI Roadmap application.
+// It manages user authentication, progress tracking, and displays the learning roadmap.
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -224,8 +227,24 @@ const roadmapData = {
         { title: "LangChain", explanation: "Learn how to use LangChain." },
         { title: "LlamaIndex", explanation: "Understand LlamaIndex." },
         { title: "Chains", explanation: "Learn about chains in LangChain." },
-        { title: "Agents", explanation: "Understand agents in LangChain." },
+        { 
+          title: "Agents", 
+          explanation: "Learn about agents in LangChain and Hugging Face.", 
+          link: "https://huggingface.co/learn/agents-course/unit0/introduction" 
+        },
         { title: "Memory", explanation: "Learn how to use memory in LangChain." },
+      ],
+      AI_Agents: [
+        {
+          title: "Introduction to AI Agents",
+          explanation: "Learn the basics of AI agents and their applications.",
+          link: "https://huggingface.co/learn/agents-course/unit0/introduction"
+        },
+        {
+          title: "Building AI Agents",
+          explanation: "Understand how to build AI agents using Hugging Face.",
+          link: "https://huggingface.co/learn/agents-course/unit0/introduction"
+        }
       ],
       RAG: [
         { title: "RAG Basics", explanation: "Learn the basics of Retrieval-Augmented Generation." },
