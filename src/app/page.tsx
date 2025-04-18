@@ -564,14 +564,29 @@ function Home() {
   };
 
   const incrementStreak = () => {
-    if (session?.email) { // Check if session and session.email are defined
+    if (session?.email) {
       const today = new Date().toLocaleDateString();
       const lastLogin = localStorage.getItem(`lastLogin-${session.email}`);
 
-      if (lastLogin !== today) {
-        setStreak(prevStreak => prevStreak + 1);
-        localStorage.setItem(`lastLogin-${session.email}`, today);
+      if (lastLogin) {
+        const lastLoginDate = new Date(lastLogin);
+        const diffInDays = Math.floor(
+          (new Date(today).getTime() - lastLoginDate.getTime()) / (1000 * 60 * 60 * 24)
+        );
+
+        if (diffInDays === 1) {
+          // Increment streak if the user logs in the next day
+          setStreak((prevStreak) => prevStreak + 1);
+        } else if (diffInDays > 1) {
+          // Reset streak if the user skips a day
+          setStreak(0);
+        }
+      } else {
+        // First login or no previous login recorded
+        setStreak(1);
       }
+
+      localStorage.setItem(`lastLogin-${session.email}`, today);
     }
   };
 
@@ -593,7 +608,7 @@ function Home() {
           {/* Motivational Banner */}
           <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 text-white rounded-lg p-6 shadow-lg mb-8">
             <h1 className="text-4xl font-bold text-center">
-              🚀 Welcome to Your FullStackAI Journey!
+              Welcome to Your FullStackAI Journey!
             </h1>
             <p className="text-center mt-2 text-lg">
               Learn, grow, and achieve your goals one step at a time. 🌟
@@ -603,7 +618,7 @@ function Home() {
           {/* Progress and Streak Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <Card className="hover:shadow-xl transition-shadow">
-              <CardHeader>
+              <CardHeader className="text-center">
                 <CardTitle>Overall Progress</CardTitle>
                 <CardDescription>Track your journey</CardDescription>
               </CardHeader>
@@ -619,7 +634,7 @@ function Home() {
             </Card>
 
             <Card className="hover:shadow-xl transition-shadow">
-              <CardHeader>
+              <CardHeader className="text-center">
                 <CardTitle>Daily Streak</CardTitle>
                 <CardDescription>Keep the momentum going</CardDescription>
               </CardHeader>
@@ -645,63 +660,43 @@ function Home() {
             </Card>
 
             <Card className="hover:shadow-xl transition-shadow">
-              <CardHeader>
+              <CardHeader className="text-center">
                 <CardTitle>Authentication</CardTitle>
                 <CardDescription>Manage your profile</CardDescription>
               </CardHeader>
               <CardContent>
-                {session ? (
-                  <div className="flex items-center space-x-4">
-                    <Avatar>
-                      <AvatarImage src={session?.picture} alt={session?.name} />
-                      <AvatarFallback>{session?.name?.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="text-sm font-medium leading-none">
-                        {session?.name}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {session?.email}
-                      </p>
-                    </div>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          className="relative h-8 w-8 rounded-full"
-                        >
-                          <Avatar className="h-8 w-8">
-                            <AvatarImage
-                              src={session?.picture}
-                              alt={session?.name}
-                            />
-                            <AvatarFallback>
-                              {session?.name?.charAt(0)}
-                            </AvatarFallback>
-                          </Avatar>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent
-                        className="w-56"
-                        align="end"
-                        forceMount
+                <div className="flex flex-col items-center space-y-4">
+                  {session ? (
+                    <>
+                      <Avatar className="h-16 w-16">
+                        <AvatarImage src={session?.picture} alt={session?.name} />
+                        <AvatarFallback>{session?.name?.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div className="text-center">
+                        <p className="text-lg font-medium">{session?.name}</p>
+                        <p className="text-sm text-gray-500">{session?.email}</p>
+                      </div>
+                      <Button
+                        onClick={handleSignOut}
+                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md shadow-md"
                       >
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem onClick={handleSignOut}>
-                          Sign out
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                ) : (
-                  <Button
-                    onClick={() => signIn()}
-                    className="bg-blue-500 hover:bg-blue-600 text-white"
-                  >
-                    Sign In with Google
-                  </Button>
-                )}
+                        Sign Out
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-center text-gray-600">
+                        Sign in to save your progress and manage your profile.
+                      </p>
+                      <Button
+                        onClick={() => signIn()}
+                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md"
+                      >
+                        Sign In with Google
+                      </Button>
+                    </>
+                  )}
+                </div>
               </CardContent>
             </Card>
           </div>
