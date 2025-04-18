@@ -6,7 +6,6 @@ import { Progress } from "@/components/ui/progress";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Toaster } from "@/components/ui/toaster";
 import {
@@ -27,28 +26,30 @@ const roadmapData = {
     title: "Core Programming (Python, JS/TS), Git, HTML/CSS, React basics",
     subtopics: [
       {
-        title: "Core Programming (Python)",
+        title: "Programming (Python)",
         subtopics: [
-          "Python: Syntax and Data Types",
+          "Syntax and Data Types",
           "  - Variables, data types, operators",
           "  - Strings, lists, dictionaries",
-          "Python: Control Flow",
+          "Control Flow",
           "  - If/else statements",
           "  - For and while loops",
-          "Python: Functions and Modules",
+          "Functions and Modules",
           "  - Defining functions, parameters",
           "  - Importing and using modules",
-          "Python: OOP",
+          "OOP",
           "  - Classes and objects",
           "  - Inheritance and polymorphism",
+          "File I/O and modules",
+          "Error handling",
         ],
       },
       {
-        title: "Core Programming (JS/TS)",
+        title: "Programming (JS/TS)",
         subtopics: [
-          "TypeScript: Basics",
+          "TypeScript Basics",
           "  - Types, interfaces, enums",
-          "TypeScript: Functional Programming",
+          "Functional Programming",
           "  - Pure functions",
           "  - Immutability",
         ],
@@ -56,20 +57,20 @@ const roadmapData = {
       {
         title: "Git",
         subtopics: [
-          "Git: Version Control",
+          "Version Control",
           "  - Basic commands: add, commit, push, pull",
-          "Git: Branching",
+          "Branching",
           "  - Creating, merging, and resolving conflicts",
         ],
       },
       {
         title: "HTML/CSS",
         subtopics: [
-          "HTML5: Structure and Semantics",
+          "HTML5 Structure and Semantics",
           "  - Semantic HTML elements",
-          "CSS3: Styling and Layout",
+          "CSS3 Styling and Layout",
           "  - Selectors, properties, values",
-          "CSS3: Responsive Design",
+          "Responsive Design",
           "  - Media queries",
           "  - Flexbox and Grid",
         ],
@@ -77,11 +78,11 @@ const roadmapData = {
       {
         title: "React basics",
         subtopics: [
-          "React: JSX",
+          "JSX",
           "  - Writing React components",
-          "React: Components",
+          "Components",
           "  - Props and State",
-          "React: Handling Events",
+          "Handling Events",
           "  - Event listeners and handlers",
         ],
       },
@@ -93,51 +94,51 @@ const roadmapData = {
       {
         title: "Next.js",
         subtopics: [
-          "Next.js: SSR and SEO",
+          "SSR and SEO",
           "  - Server-Side Rendering basics",
           "  - SEO optimization techniques",
-          "Next.js: File Routing",
+          "File Routing",
           "  - Defining routes based on the file system",
-          "Next.js: API Routes",
+          "API Routes",
           "  - Creating backend endpoints using Next.js",
         ],
       },
       {
         title: "Flask (Python microframework)",
         subtopics: [
-          "Flask: Routing and Views",
+          "Routing and Views",
           "  - Handling web requests with Flask",
-          "Flask: Templates and Jinja",
+          "Templates and Jinja",
           "  - Generating dynamic HTML with Jinja templates",
         ],
       },
       {
         title: "FastAPI (async APIs)",
         subtopics: [
-          "FastAPI: Pydantic Validation",
+          "Pydantic Validation",
           "  - Ensuring data integrity with Pydantic models",
         ],
       },
       {
         title: "Node.js",
         subtopics: [
-          "Node.js: Express Framework",
+          "Express Framework",
           "  - Building server-side applications with Express",
         ],
       },
       {
         title: "MongoDB",
         subtopics: [
-          "MongoDB: Documents and CRUD",
+          "Documents and CRUD",
           "  - Managing data in MongoDB",
         ],
       },
       {
         title: "PostgreSQL",
         subtopics: [
-          "PostgreSQL: Relational DB Design",
+          "Relational DB Design",
           "  - Structuring data in PostgreSQL",
-          "PostgreSQL: SQL Queries and Joins",
+          "SQL Queries and Joins",
           "  - Retrieving data efficiently with SQL",
         ],
       },
@@ -162,22 +163,22 @@ const roadmapData = {
       {
         title: "SaaS Auth",
         subtopics: [
-          "SaaS Auth: JWT",
+          "JWT",
           "  - Securing APIs",
-          "SaaS Auth: OAuth2",
+          "OAuth2",
           "  - Implementing third-party authentication",
         ],
       },
       {
         title: "Cloud",
         subtopics: [
-          "Cloud: Vercel Deployment",
+          "Vercel Deployment",
           "  - Hosting frontend applications",
-          "Cloud: AWS EC2 Basics",
+          "AWS EC2 Basics",
           "  - Virtual servers in the cloud",
-          "Cloud: AWS Lambda",
+          "AWS Lambda",
           "  - Serverless functions",
-          "Cloud: AWS S3",
+          "AWS S3",
           "  - Object storage",
         ],
       },
@@ -196,41 +197,41 @@ const roadmapData = {
       {
         title: "LLMs",
         subtopics: [
-          "LLMs: Tokens and Embeddings",
+          "Tokens and Embeddings",
           "  - Understanding language models",
-          "LLMs: Transformers",
+          "Transformers",
           "  - Core of modern LLMs",
         ],
       },
       {
         title: "LangChain",
         subtopics: [
-          "LangChain: Chains and Agents",
+          "Chains and Agents",
           "  - Orchestrating LLMs",
         ],
       },
       {
         title: "RAG",
         subtopics: [
-          "RAG: Retrieval",
+          "Retrieval",
           "  - Improving LLM performance",
         ],
       },
       {
         title: "MCP",
         subtopics: [
-          "MCP: Model-Context-Persona",
+          "Model-Context-Persona",
           "  - Designing AI systems",
         ],
       },
       {
         title: "Vector DBs",
         subtopics: [
-          "Vector DBs: FAISS",
+          "FAISS",
           "  - Similarity search in vector databases",
-          "Vector DBs: Pinecone",
+          "Pinecone",
           "  - Managed vector database",
-          "Vector DBs: Chroma",
+          "Chroma",
           "  - Open-source vector database",
         ],
       },
@@ -448,11 +449,17 @@ export default function Home() {
   return (
     
       <Toaster />
+      <h1 className="text-3xl font-bold mb-6 text-center">FullStackAI Roadmap</h1>
+
       
         
           
             
-              <Badge variant="secondary">Daily Streak: {streak} days</Badge>
+              
+                
+                  Daily Streak: {streak} days
+                
+              
             
           
         
@@ -462,23 +469,14 @@ export default function Home() {
             
               
                 
-                  <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                    <Avatar className="h-8 w-8">
-                      <AvatarImage src={user?.imageUrl || "https://picsum.photos/48/48"} alt={user?.name || "Avatar"} />
-                      <AvatarFallback>{user?.name?.charAt(0) || '?'}</AvatarFallback>
-                    </Avatar>
-                  </Button>
-                
-                
                   
                     
-                      <p className="text-sm font-semibold leading-none">{user?.name}</p>
-                      <p className="text-xs text-muted-foreground">
+                      {user?.name}
+                      
                         {user?.email}
-                      </p>
+                      
                     
                   
-                  <DropdownMenuSeparator />
                   
                     Sign out
                   
@@ -498,11 +496,10 @@ export default function Home() {
           
             
               
-                <h2 className="text-xl font-semibold">{pillar}</h2>
-                <Progress value={progress[pillar] || 0} className="mt-2" />
-                <p className="text-sm text-muted-foreground mt-1">
+                {pillar}
+                
                   {progress[pillar] ? progress[pillar]?.toFixed(1) : 0}% Complete
-                </p>
+                
               
               
                 
@@ -525,13 +522,15 @@ export default function Home() {
                                   
                                     
                                       
-                                        <input
-                                          type="checkbox"
-                                          checked={completedSubtopics(pillar).has(subtopic)}
-                                          onChange={() => toggleSubtopic(pillar, groupIndex, subtopic)}
-                                          className="mr-2"
-                                        />
-                                        {subtopic}
+                                        
+                                          <input
+                                            type="checkbox"
+                                            checked={completedSubtopics(pillar).has(subtopic)}
+                                            onChange={() => toggleSubtopic(pillar, groupIndex, subtopic)}
+                                            className="mr-2"
+                                          />
+                                          {subtopic}
+                                        
                                       
                                     
                                   
