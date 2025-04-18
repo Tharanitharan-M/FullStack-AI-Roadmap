@@ -491,12 +491,14 @@ function Home() {
   };
 
   const incrementStreak = () => {
-    const today = new Date().toLocaleDateString();
-    const lastLogin = localStorage.getItem(`lastLogin-${session.email}`);
+    if (session?.email) { // Check if session and session.email are defined
+      const today = new Date().toLocaleDateString();
+      const lastLogin = localStorage.getItem(`lastLogin-${session.email}`);
 
-    if (lastLogin !== today) {
-      setStreak(prevStreak => prevStreak + 1);
-      localStorage.setItem(`lastLogin-${session.email}`, today);
+      if (lastLogin !== today) {
+        setStreak(prevStreak => prevStreak + 1);
+        localStorage.setItem(`lastLogin-${session.email}`, today);
+      }
     }
   };
 
