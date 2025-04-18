@@ -28,18 +28,14 @@ const roadmapData = {
       {
         title: "Programming (Python)",
         subtopics: [
-          "Syntax and Data Types",
-          "  - Variables, data types, operators",
-          "  - Strings, lists, dictionaries",
-          "Control Flow",
-          "  - If/else statements",
-          "  - For and while loops",
-          "Functions and Modules",
-          "  - Defining functions, parameters",
-          "  - Importing and using modules",
-          "OOP",
-          "  - Classes and objects",
-          "  - Inheritance and polymorphism",
+          "Syntax and Data Types: Variables, data types, operators",
+          "Strings, lists, dictionaries",
+          "Control Flow: If/else statements",
+          "For and while loops",
+          "Functions and Modules: Defining functions, parameters",
+          "Importing and using modules",
+          "OOP: Classes and objects",
+          "Inheritance and polymorphism",
           "File I/O and modules",
           "Error handling",
         ],
@@ -47,43 +43,31 @@ const roadmapData = {
       {
         title: "Programming (JS/TS)",
         subtopics: [
-          "TypeScript Basics",
-          "  - Types, interfaces, enums",
-          "Functional Programming",
-          "  - Pure functions",
-          "  - Immutability",
+          "TypeScript Basics: Types, interfaces, enums",
+          "Functional Programming: Pure functions, Immutability",
         ],
       },
       {
         title: "Git",
         subtopics: [
-          "Version Control",
-          "  - Basic commands: add, commit, push, pull",
-          "Branching",
-          "  - Creating, merging, and resolving conflicts",
+          "Version Control: Basic commands: add, commit, push, pull",
+          "Branching: Creating, merging, and resolving conflicts",
         ],
       },
       {
         title: "HTML/CSS",
         subtopics: [
-          "HTML5 Structure and Semantics",
-          "  - Semantic HTML elements",
-          "CSS3 Styling and Layout",
-          "  - Selectors, properties, values",
-          "Responsive Design",
-          "  - Media queries",
-          "  - Flexbox and Grid",
+          "HTML5 Structure and Semantics: Semantic HTML elements",
+          "CSS3 Styling and Layout: Selectors, properties, values",
+          "Responsive Design: Media queries, Flexbox and Grid",
         ],
       },
       {
         title: "React basics",
         subtopics: [
-          "JSX",
-          "  - Writing React components",
-          "Components",
-          "  - Props and State",
-          "Handling Events",
-          "  - Event listeners and handlers",
+          "JSX: Writing React components",
+          "Components: Props and State",
+          "Handling Events: Event listeners and handlers",
         ],
       },
     ],
@@ -94,52 +78,41 @@ const roadmapData = {
       {
         title: "Next.js",
         subtopics: [
-          "SSR and SEO",
-          "  - Server-Side Rendering basics",
-          "  - SEO optimization techniques",
-          "File Routing",
-          "  - Defining routes based on the file system",
-          "API Routes",
-          "  - Creating backend endpoints using Next.js",
+          "SSR and SEO: Server-Side Rendering basics, SEO optimization techniques",
+          "File Routing: Defining routes based on the file system",
+          "API Routes: Creating backend endpoints using Next.js",
         ],
       },
       {
         title: "Flask (Python microframework)",
         subtopics: [
-          "Routing and Views",
-          "  - Handling web requests with Flask",
-          "Templates and Jinja",
-          "  - Generating dynamic HTML with Jinja templates",
+          "Routing and Views: Handling web requests with Flask",
+          "Templates and Jinja: Generating dynamic HTML with Jinja templates",
         ],
       },
       {
         title: "FastAPI (async APIs)",
         subtopics: [
-          "Pydantic Validation",
-          "  - Ensuring data integrity with Pydantic models",
+          "Pydantic Validation: Ensuring data integrity with Pydantic models",
         ],
       },
       {
         title: "Node.js",
         subtopics: [
-          "Express Framework",
-          "  - Building server-side applications with Express",
+          "Express Framework: Building server-side applications with Express",
         ],
       },
       {
         title: "MongoDB",
         subtopics: [
-          "Documents and CRUD",
-          "  - Managing data in MongoDB",
+          "Documents and CRUD: Managing data in MongoDB",
         ],
       },
       {
         title: "PostgreSQL",
         subtopics: [
-          "Relational DB Design",
-          "  - Structuring data in PostgreSQL",
-          "SQL Queries and Joins",
-          "  - Retrieving data efficiently with SQL",
+          "Relational DB Design: Structuring data in PostgreSQL",
+          "SQL Queries and Joins: Retrieving data efficiently with SQL",
         ],
       },
     ],
@@ -150,43 +123,31 @@ const roadmapData = {
       {
         title: "DevOps",
         subtopics: [
-          "Docker",
-          "  - Docker: Containerizing Apps",
-          "    - Packaging applications for portability",
-          "  - Docker: Compose",
-          "    - Managing multi-container applications",
-          "CI/CD",
-          "  - CI/CD: GitHub Actions",
-          "    - Automating builds and deployments",
+          "Docker: Containerizing Apps: Packaging applications for portability",
+          "Docker: Compose: Managing multi-container applications",
+          "CI/CD: GitHub Actions: Automating builds and deployments",
         ],
       },
       {
         title: "SaaS Auth",
         subtopics: [
-          "JWT",
-          "  - Securing APIs",
-          "OAuth2",
-          "  - Implementing third-party authentication",
+          "JWT: Securing APIs",
+          "OAuth2: Implementing third-party authentication",
         ],
       },
       {
         title: "Cloud",
         subtopics: [
-          "Vercel Deployment",
-          "  - Hosting frontend applications",
-          "AWS EC2 Basics",
-          "  - Virtual servers in the cloud",
-          "AWS Lambda",
-          "  - Serverless functions",
-          "AWS S3",
-          "  - Object storage",
+          "Vercel Deployment: Hosting frontend applications",
+          "AWS EC2 Basics: Virtual servers in the cloud",
+          "AWS Lambda: Serverless functions",
+          "AWS S3: Object storage",
         ],
       },
       {
         title: "Project #1 Launch",
         subtopics: [
-          "Deploying full-stack application",
-          "  - Making project live",
+          "Deploying full-stack application: Making project live",
         ],
       },
     ],
@@ -197,49 +158,40 @@ const roadmapData = {
       {
         title: "LLMs",
         subtopics: [
-          "Tokens and Embeddings",
-          "  - Understanding language models",
-          "Transformers",
-          "  - Core of modern LLMs",
+          "Tokens and Embeddings: Understanding language models",
+          "Transformers: Core of modern LLMs",
         ],
       },
       {
         title: "LangChain",
         subtopics: [
-          "Chains and Agents",
-          "  - Orchestrating LLMs",
+          "Chains and Agents: Orchestrating LLMs",
         ],
       },
       {
         title: "RAG",
         subtopics: [
-          "Retrieval",
-          "  - Improving LLM performance",
+          "Retrieval: Improving LLM performance",
         ],
       },
       {
         title: "MCP",
         subtopics: [
-          "Model-Context-Persona",
-          "  - Designing AI systems",
+          "Model-Context-Persona: Designing AI systems",
         ],
       },
       {
         title: "Vector DBs",
         subtopics: [
-          "FAISS",
-          "  - Similarity search in vector databases",
-          "Pinecone",
-          "  - Managed vector database",
-          "Chroma",
-          "  - Open-source vector database",
+          "FAISS: Similarity search in vector databases",
+          "Pinecone: Managed vector database",
+          "Chroma: Open-source vector database",
         ],
       },
       {
         title: "Project #2 (AI SaaS)",
         subtopics: [
-          "AI-powered SaaS application",
-          "  - Developing innovative products",
+          "AI-powered SaaS application: Developing innovative products",
         ],
       },
     ],
@@ -250,48 +202,31 @@ const roadmapData = {
       {
         title: "CS Fundamentals",
         subtopics: [
-          "OS: Processes",
-          "  - Understanding how processes work",
-          "OS: Threads",
-          "  - Understanding how threads work",
-          "OS: Memory",
-          "  - Understanding how memory management works",
-          "Networking",
-          "  - Networking: HTTP/HTTPS",
-          "    - Understanding web communication",
-          "  - Networking: DNS",
-          "    - Resolving domain names",
-          "  - Networking: TCP/IP",
-          "    - Foundation of the Internet",
-          "  - Networking: WebSockets",
-          "    - Real-time communication",
-          "DBMS",
-          "  - DBMS: ACID",
-          "    - Ensuring database consistency",
-          "  - DBMS: Indexing",
-          "    - Improving database query performance",
+          "OS: Processes: Understanding how processes work",
+          "OS: Threads: Understanding how threads work",
+          "OS: Memory: Understanding how memory management works",
+          "Networking: HTTP/HTTPS: Understanding web communication",
+          "Networking: DNS: Resolving domain names",
+          "Networking: TCP/IP: Foundation of the Internet",
+          "Networking: WebSockets: Real-time communication",
+          "DBMS: ACID: Ensuring database consistency",
+          "DBMS: Indexing: Improving database query performance",
         ],
       },
       {
         title: "DSA",
         subtopics: [
-          "Arrays",
-          "  - Working with basic arrays",
-          "Linked Lists",
-          "  - Working with basic linked lists",
-          "Hash Maps",
-          "  - Efficient data retrieval",
+          "Arrays: Working with basic arrays",
+          "Linked Lists: Working with basic linked lists",
+          "Hash Maps: Efficient data retrieval",
         ],
       },
       {
         title: "System Design",
         subtopics: [
-          "Caching",
-          "  - Speeding up data access",
-          "Load Balancing",
-          "  - Distributing traffic",
-          "Queues",
-          "  - Managing asynchronous tasks",
+          "Caching: Speeding up data access",
+          "Load Balancing: Distributing traffic",
+          "Queues: Managing asynchronous tasks",
         ],
       },
       {
@@ -447,7 +382,7 @@ export default function Home() {
   };
 
   return (
-    
+    <>
       <Toaster />
       <h1 className="text-3xl font-bold mb-6 text-center">FullStackAI Roadmap</h1>
 
@@ -465,7 +400,7 @@ export default function Home() {
         
 
         
-          
+          {user ? (
             
               
                 
@@ -478,14 +413,18 @@ export default function Home() {
                     
                   
                   
-                    Sign out
+                    
+                      Sign out
+                    
                   
                 
               
             
           ) : (
             
-              Sign In
+              
+                Sign In
+              
             
           )}
         
@@ -548,6 +487,7 @@ export default function Home() {
           
         ))}
       
-    
+    </>
   );
 }
+
