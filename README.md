@@ -94,6 +94,7 @@ This application uses Genkit to:
 
 1.  **Generate Subtopics:** AI suggests subtopics within each Learning Pillar.
 2.  **Generate Explanations:** AI provides short explanations for each subtopic, answering "Why am I learning this?"
+3. **Google Oauth**
 
 ## Contributing
 
