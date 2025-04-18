@@ -486,6 +486,32 @@ function Home() {
 
   // Authentication
   const [session, setSession] = useState<any>(null);
+  const [authLoading, setAuthLoading] = useState(false); // Add loading state for authentication
+
+  const handleSignIn = async () => {
+    setAuthLoading(true); // Set loading to true
+    try {
+      await signIn();
+      const userSession = await getSession(); // Fetch updated session
+      setSession(userSession); // Update session state
+    } catch (error) {
+      console.error("Sign-in failed:", error);
+    } finally {
+      setAuthLoading(false); // Reset loading state
+    }
+  };
+
+  const handleSignOut = async () => {
+    setAuthLoading(true); // Set loading to true
+    try {
+      await signOut();
+      setSession(null); // Clear session state
+    } catch (error) {
+      console.error("Sign-out failed:", error);
+    } finally {
+      setAuthLoading(false); // Reset loading state
+    }
+  };
 
   useEffect(() => {
     const fetchSession = async () => {
@@ -590,11 +616,6 @@ function Home() {
     }
   };
 
-  const handleSignOut = async () => {
-    await signOut();
-    setSession(null);
-  };
-
   const overallProgress = calculateOverallProgress();
 
   return (
@@ -678,9 +699,12 @@ function Home() {
                       </div>
                       <Button
                         onClick={handleSignOut}
-                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md shadow-md"
+                        disabled={authLoading} // Disable button while loading
+                        className={`${
+                          session ? "bg-red-500 hover:bg-red-600" : "bg-blue-500 hover:bg-blue-600"
+                        } text-white px-4 py-2 rounded-md shadow-md`}
                       >
-                        Sign Out
+                        {authLoading ? "Loading..." : "Sign Out"}
                       </Button>
                     </>
                   ) : (
@@ -689,10 +713,11 @@ function Home() {
                         Sign in to save your progress and manage your profile.
                       </p>
                       <Button
-                        onClick={() => signIn()}
+                        onClick={handleSignIn}
+                        disabled={authLoading} // Disable button while loading
                         className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md shadow-md"
                       >
-                        Sign In with Google
+                        {authLoading ? "Loading..." : "Sign In with Google"}
                       </Button>
                     </>
                   )}
