@@ -3,9 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+*/
 
 @layer base {
   :root {
@@ -87,4 +89,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
