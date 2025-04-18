@@ -286,6 +286,123 @@ const roadmapData = {
             ],
         },
     },
+  Neetcode150: {
+    title: "Neetcode 150",
+    subtopics: {
+      ArraysAndHashing: [
+        { title: "Contains Duplicate", explanation: "Determine if any value appears at least twice in an array." },
+        { title: "Valid Anagram", explanation: "Check if two strings are anagrams of each other." },
+        { title: "Two Sum", explanation: "Find two numbers in an array that add up to a specific target." },
+        { title: "Group Anagrams", explanation: "Group anagrams together in a list of strings." },
+        { title: "Top K Frequent Elements", explanation: "Find the k most frequent elements in an array." },
+        { title: "Product of Array Except Self", explanation: "Compute the product of all elements except the element at each index." },
+        { title: "Longest Consecutive Sequence", explanation: "Find the longest consecutive sequence in an unsorted array." },
+      ],
+      TwoPointers: [
+        { title: "Valid Palindrome", explanation: "Check if a string is a palindrome, ignoring non-alphanumeric characters." },
+        { title: "Two Sum II - Input Array Is Sorted", explanation: "Find two numbers in a sorted array that add up to a specific target." },
+        { title: "3Sum", explanation: "Find all unique triplets in an array which gives the sum of zero." },
+        { title: "Container With Most Water", explanation: "Find the container that can hold the most water." },
+      ],
+      SlidingWindow: [
+        { title: "Best Time to Buy and Sell Stock", explanation: "Find the maximum profit by buying and selling a stock once." },
+        { title: "Longest Repeating Character Replacement", explanation: "Find the longest substring containing the same letter after replacement." },
+        { title: "Permutation in String", explanation: "Check if s2 contains a permutation of s1." },
+        { title: "Minimum Window Substring", explanation: "Find the minimum window in S which will contain all the characters in T." },
+      ],
+      Stack: [
+        { title: "Valid Parentheses", explanation: "Determine if the input string is valid based on parentheses." },
+        { title: "Min Stack", explanation: "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time." },
+        { title: "Evaluate Reverse Polish Notation", explanation: "Evaluate the value of an arithmetic expression in Reverse Polish Notation." },
+        { title: "Generate Parentheses", explanation: "Generate all well-formed parentheses combinations for n pairs." },
+        { title: "Daily Temperatures", explanation: "For each day, find the number of days until a warmer day." },
+        { title: "Car Fleet", explanation: "Calculate the number of car fleets that will arrive at the destination." },
+        { title: "Largest Rectangle in Histogram", explanation: "Find the largest rectangular area in a histogram." },
+      ],
+      BinarySearch: [
+        { title: "Binary Search", explanation: "Implement binary search to find a target in a sorted array." },
+        { title: "Koko Eating Bananas", explanation: "Find the minimum eating speed to finish all bananas within H hours." },
+        { title: "Search a 2D Matrix", explanation: "Determine if a target value exists in a 2D matrix." },
+        { title: "Find Minimum in Rotated Sorted Array", explanation: "Find the minimum element in a rotated sorted array." },
+        { title: "Search in Rotated Sorted Array", explanation: "Search for a target in a rotated sorted array." },
+        { title: "Time Based Key-Value Store", explanation: "Create a time-based key-value storage system." },
+        { title: "Median of Two Sorted Arrays", explanation: "Find the median of two sorted arrays." },
+      ],
+      LinkedList: [
+        { title: "Reverse Linked List", explanation: "Reverse a singly linked list." },
+        { title: "Merge Two Sorted Lists", explanation: "Merge two sorted linked lists into one sorted list." },
+        { title: "Reorder List", explanation: "Reorder a linked list to the specified pattern." },
+        { title: "Remove Nth Node From End of List", explanation: "Remove the nth node from the end of a list." },
+        { title: "Linked List Cycle", explanation: "Determine if a linked list has a cycle." },
+        { title: "Merge K Sorted Lists", explanation: "Merge k sorted linked lists into one sorted list." },
+        { title: "Reverse Nodes in k-Group", explanation: "Reverse nodes in a linked list in groups of k." },
+      ],
+      Trees: [
+        { title: "Invert/Flip Binary Tree", explanation: "Invert a binary tree." },
+        { title: "Maximum Depth of Binary Tree", explanation: "Find the maximum depth of a binary tree." },
+        { title: "Same Tree", explanation: "Check if two binary trees are the same." },
+        { title: "Subtree of Another Tree", explanation: "Determine if a binary tree is a subtree of another binary tree." },
+        { title: "Lowest Common Ancestor of BST", explanation: "Find the lowest common ancestor of two nodes in a BST." },
+        { title: "Binary Tree Right Side View", explanation: "Print nodes visible from the right side of a binary tree." },
+        { title: "Count Good Nodes in Binary Tree", explanation: "Count the number of good nodes in a binary tree." },
+        { title: "Validate Binary Search Tree", explanation: "Determine if a binary tree is a valid binary search tree." },
+        { title: "Kth Smallest Element in a BST", explanation: "Find the kth smallest element in a binary search tree." },
+        { title: "Construct Binary Tree from Preorder and Inorder Traversal", explanation: "Construct a binary tree from preorder and inorder traversals." },
+        { title: "Binary Tree Maximum Path Sum", explanation: "Find the maximum path sum in a binary tree." },
+        { title: "Serialize and Deserialize Binary Tree", explanation: "Serialize and deserialize a binary tree." },
+      ],
+      Tries: [
+        { title: "Implement Trie (Prefix Tree)", explanation: "Implement a trie (prefix tree)." },
+        { title: "Design Add and Search Words Data Structure", explanation: "Design a data structure that supports adding new words and searching existing words." },
+        { title: "Word Search II", explanation: "Find all words in a board that can be formed from a list of words." },
+      ],
+      HeapPriorityQueue: [
+        { title: "Kth Largest Element in a Stream", explanation: "Design a class to find the kth largest element in a stream." },
+        { title: "Last Stone Weight", explanation: "Find the weight of the last stone after repeatedly smashing stones." },
+        { title: "K Closest Points to Origin", explanation: "Find the k closest points to the origin." },
+        { title: "Connect Ropes to Minimize the Cost", explanation: "Connect ropes with minimum cost." },
+        { title: "Task Scheduler", explanation: "Determine the least number of intervals the CPU will take to finish all the given tasks." },
+        { title: "Find Median from Data Stream", explanation: "Design a data structure that supports adding numbers and finding the median." },
+      ],
+      Backtracking: [
+        { title: "Combination Sum", explanation: "Find all unique combinations of candidates that sum to T." },
+        { title: "Permutations", explanation: "Find all possible permutations of an array." },
+        { title: "Subsets", explanation: "Find all possible subsets of a set." },
+        { title: "Word Search", explanation: "Determine if the word can be found in the board." },
+        { title: "Palindrome Partitioning", explanation: "Find all possible palindrome partitioning of a string." },
+      ],
+      Graphs: [
+        { title: "Number of Islands", explanation: "Count the number of islands in a 2D grid." },
+        { title: "Clone Graph", explanation: "Clone an undirected graph." },
+        { title: "Course Schedule", explanation: "Check if it is possible to finish all courses." },
+        { title: "Pacific Atlantic Water Flow", explanation: "Determine which cells can flow to both Pacific and Atlantic oceans." },
+        { title: "Longest Increasing Path in a Matrix", explanation: "Find the length of the longest increasing path in a matrix." },
+        { title: "Graph Valid Tree", explanation: "Determine if the graph is a valid tree." },
+        { title: "Max Area of Island", explanation: "Find the maximum area of an island in a 2D grid." },
+      ],
+      AdvancedGraphs: [
+        { title: "Number of Connected Components in an Undirected Graph", explanation: "Count the number of connected components in an undirected graph." },
+        { title: "Alien Dictionary", explanation: "Determine the order of characters in the alien dictionary." },
+        { title: "Reconstruct Itinerary", explanation: "Reconstruct the itinerary in order." },
+        { title: "Minimum Height Trees", explanation: "Find all minimum height trees." },
+      ],
+      DynamicProgramming: [
+        { title: "Climbing Stairs", explanation: "Find the number of distinct ways to climb to the top." },
+        { title: "Coin Change", explanation: "Find the fewest number of coins that you need to make up that amount." },
+        { title: "Longest Increasing Subsequence", explanation: "Find the length of the longest increasing subsequence." },
+        { title: "Longest Common Subsequence", explanation: "Find the length of the longest common subsequence." },
+        { title: "Word Break Problem", explanation: "Determine if s can be segmented into a space-separated sequence of dictionary words." },
+        { title: "Combination Sum IV", explanation: "Find the number of combinations that add up to the target." },
+        { title: "House Robber", explanation: "Find the maximum amount of money you can rob tonight." },
+        { title: "House Robber II", explanation: "Find the maximum amount of money you can rob tonight with a circular arrangement." },
+        { title: "Decode Ways", explanation: "Find the number of ways to decode a message." },
+        { title: "Unique Paths", explanation: "Count the number of unique paths from top-left to bottom-right." },
+        { title: "Jump Game", explanation: "Determine if you are able to reach the last index." },
+        { title: "Edit Distance", explanation: "Find the minimum number of operations required to convert word1 to word2." },
+        { title: "Burst Balloons", explanation: "Find the maximum coins you can collect by bursting balloons." },
+      ],
+    },
+  },
 };
 
 export default function Home() {
@@ -423,35 +540,40 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               {user ? (
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center space-x-4">
+                
+                  
                     <Avatar>
                       <AvatarImage src={user?.imageUrl} alt={user?.name} />
                       <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
                     </Avatar>
-                    <div>
-                      <div className="font-bold">{user?.name}</div>
-                      <div className="text-sm text-muted-foreground">{user?.email}</div>
-                    </div>
-                  </div>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                        <Avatar className="h-8 w-8">
-                          <AvatarImage src={user?.imageUrl} alt={user?.name} />
-                          <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
-                        </Avatar>
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56" align="end" forceMount>
-                      <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem onClick={handleSignOut}>
-                        Sign out
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </div>
+                    
+                      
+                      {user?.name}
+                      
+                        {user?.email}
+                      
+                    
+                  
+                  
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                          <Avatar className="h-8 w-8">
+                            <AvatarImage src={user?.imageUrl} alt={user?.name} />
+                            <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
+                          </Avatar>
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-56" align="end" forceMount>
+                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem onClick={handleSignOut}>
+                          Sign out
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  
+                
               ) : (
                 <Button onClick={handleSignIn}>Sign In</Button>
               )}
@@ -463,13 +585,15 @@ export default function Home() {
           {Object.entries(roadmapData).map(([topic, data]) => (
             <Card key={topic}>
               <CardHeader>
-                <div className="flex justify-between items-center">
-                  <CardTitle>{data.title}</CardTitle>
-                  <Badge variant="outline">
-                    {calculateTopicProgress(topic).toFixed(1)}% Complete
-                  </Badge>
-                </div>
-                <CardDescription>{data.title}</CardDescription>
+                
+                  
+                    {data.title}
+                    
+                      {calculateTopicProgress(topic).toFixed(1)}% Complete
+                    
+                  
+                  {data.title}
+                
               </CardHeader>
               <CardContent>
                 <Accordion type="single" collapsible className="w-full">
@@ -479,36 +603,42 @@ export default function Home() {
                     </AccordionTrigger>
                     <AccordionContent>
                       {isLoading ? (
-                        <div>
+                        
                           Loading subtopics...
-                        </div>
+                        
                       ) : (
-                        <div>
+                        
                           {Object.entries(data.subtopics).map(([subtopic, units]) => (
-                            <div key={subtopic} className="mb-4">
-                              <h3 className="font-semibold">{subtopic}</h3>
-                              <ul className="list-none pl-4">
-                                {units.map(unit => (
-                                  <li key={unit.title} className="flex items-center py-1">
-                                    <Checkbox
-                                      id={`${subtopic}-${unit.title}`}
-                                      checked={progress[`${subtopic}-${unit.title}`] || false}
-                                      onCheckedChange={() => {
-                                        toggleSubtopic(topic, subtopic, unit.title);
-                                        incrementStreak(); // Increment streak on checkbox change
-                                      }}
-                                      className="mr-2"
-                                    />
-                                    <label htmlFor={`${subtopic}-${unit.title}`} className="inline-block">
-                                      {unit.title}
-                                    </label>
-                                    <span className="text-sm text-muted-foreground">({unit.explanation})</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
+                            
+                              
+                                
+                                  {subtopic}
+                                
+                                
+                                  {units.map(unit => (
+                                    
+                                      
+                                        <Checkbox
+                                          id={`${subtopic}-${unit.title}`}
+                                          checked={progress[`${subtopic}-${unit.title}`] || false}
+                                          onCheckedChange={() => {
+                                            toggleSubtopic(topic, subtopic, unit.title);
+                                            incrementStreak(); // Increment streak on checkbox change
+                                          }}
+                                          className="mr-2"
+                                        />
+                                        
+                                          {unit.title}
+                                        
+                                        ({unit.explanation})
+                                      
+                                    
+                                  ))}
+                                
+                              
+                            
                           ))}
-                        </div>
+                        
                       )}
                     </AccordionContent>
                   </AccordionItem>
