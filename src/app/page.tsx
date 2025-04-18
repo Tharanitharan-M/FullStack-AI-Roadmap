@@ -10,6 +10,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuLabel } from "@/components/ui/dropdown-menu"
 import { useToast } from "@/hooks/use-toast"; // Import useToast
+import { Checkbox } from "@/components/ui/checkbox";
 
 // Authentication
 import { useUser, useSignIn, useSignOut } from "../lib/auth";
@@ -234,6 +235,57 @@ const roadmapData = {
       ],
     },
   },
+    SystemDesign: {
+        title: "System Design & Software Architecture",
+        subtopics: {
+            ObjectOrientedDesign: [
+                { title: "SOLID Principles (Single Responsibility, Open/Closed, etc.)", explanation: "Foundation for reusable, clean, and extensible architecture." },
+                { title: "Coupling & Cohesion", explanation: "Understand how to manage dependencies and relationships between objects." },
+                { title: "Composition vs Inheritance", explanation: "Learn the benefits of composition over inheritance for code reuse." },
+                { title: "Interfaces & Abstractions", explanation: "Learn how to use interfaces to define contracts." },
+                { title: "Dependency Inversion", explanation: "Understand how to decouple high-level modules from low-level modules." },
+            ],
+            CreationalDesignPatterns: [
+                { title: "Singleton", explanation: "Learn how to use the Singleton pattern." },
+                { title: "Factory Method", explanation: "Understand the Factory Method Pattern." },
+                { title: "Abstract Factory", explanation: "Learn how to use Abstract Factory." },
+                { title: "Builder Pattern", explanation: "Understand the Builder Pattern." },
+                { title: "Prototype", explanation: "Learn how to use Prototype." },
+            ],
+            StructuralDesignPatterns: [
+                { title: "Adapter", explanation: "Learn how to use the Adapter pattern." },
+                { title: "Decorator", explanation: "Understand the Decorator Pattern." },
+                { title: "Proxy", explanation: "Learn how to use Proxy." },
+                { title: "Composite", explanation: "Learn how to use Composite." },
+                { title: "Bridge", explanation: "Understand the Bridge Pattern." },
+                { title: "Flyweight", explanation: "Learn how to use Flyweight." },
+                { title: "Facade", explanation: "Learn the basics of Facade." },
+            ],
+            BehavioralDesignPatterns: [
+                { title: "Strategy", explanation: "Learn how to use Strategy." },
+                { title: "Template Method", explanation: "Understand the Template Method Pattern." },
+                { title: "Command", explanation: "Learn how to use Command." },
+                { title: "Observer", explanation: "Learn how to use Observer." },
+                { title: "Mediator", explanation: "Learn how to use Mediator." },
+                { title: "Memento", explanation: "Learn how to use Memento." },
+                { title: "Chain of Responsibility", explanation: "Learn how to use Chain of Responsibility." },
+                { title: "State Pattern", explanation: "Understand State Pattern." },
+                { title: "Iterator", explanation: "Learn how to use Iterator." },
+                { title: "Visitor", explanation: "Learn the basics of Visitor." },
+            ],
+            SystemDesignConcepts: [
+                { title: "Load Balancing", explanation: "Learn how to implement Load Balancing." },
+                { title: "Caching (Redis, CDN)", explanation: "Understand how to use Caching (Redis, CDN)." },
+                { title: "Rate Limiting & Queues", explanation: "Learn how to implement Rate Limiting & Queues." },
+                { title: "Scaling (Vertical vs Horizontal)", explanation: "Understand Scaling (Vertical vs Horizontal)." },
+                { title: "Consistency & Availability (CAP Theorem)", explanation: "Learn about Consistency & Availability (CAP Theorem)." },
+                { title: "Microservices vs Monolith", explanation: "Understand Microservices vs Monolith." },
+                { title: "API Design & Versioning", explanation: "Learn API Design & Versioning." },
+                { title: "Database Sharding & Replication", explanation: "Learn Database Sharding & Replication." },
+                { title: "Designing for Failure", explanation: "Learn Designing for Failure." },
+            ],
+        },
+    },
 };
 
 export default function Home() {
@@ -340,40 +392,47 @@ export default function Home() {
     <>
       <Toaster />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold mb-6 text-center">FullStackAI Roadmap</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">FullStackAI Roadmap</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <Card>
             <CardHeader>
               <CardTitle>Overall Progress</CardTitle>
+              <CardDescription>Track your journey</CardDescription>
             </CardHeader>
             <CardContent>
               <Progress value={overallProgress} />
               {overallProgress.toFixed(1)}% Complete
             </CardContent>
           </Card>
+
           <Card>
             <CardHeader>
               <CardTitle>Daily Streak</CardTitle>
+              <CardDescription>Keep the momentum going</CardDescription>
             </CardHeader>
             <CardContent>
               <Badge variant="secondary">Daily Streak: {streak} days</Badge>
             </CardContent>
           </Card>
+
           <Card>
             <CardHeader>
               <CardTitle>Authentication</CardTitle>
+              <CardDescription>Manage your profile</CardDescription>
             </CardHeader>
             <CardContent>
               {user ? (
-                <div className="flex items-center space-x-4">
-                  <Avatar>
-                    <AvatarImage src={user?.imageUrl} alt={user?.name} />
-                    <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-medium">{user?.name}</div>
-                    <div className="text-sm text-muted-foreground">{user?.email}</div>
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center space-x-4">
+                    <Avatar>
+                      <AvatarImage src={user?.imageUrl} alt={user?.name} />
+                      <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <div className="font-bold">{user?.name}</div>
+                      <div className="text-sm text-muted-foreground">{user?.email}</div>
+                    </div>
                   </div>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -400,7 +459,7 @@ export default function Home() {
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {Object.entries(roadmapData).map(([topic, data]) => (
             <Card key={topic}>
               <CardHeader>
@@ -410,9 +469,7 @@ export default function Home() {
                     {calculateTopicProgress(topic).toFixed(1)}% Complete
                   </Badge>
                 </div>
-                <CardDescription>
-                  {data.title}
-                </CardDescription>
+                <CardDescription>{data.title}</CardDescription>
               </CardHeader>
               <CardContent>
                 <Accordion type="single" collapsible className="w-full">
@@ -422,7 +479,9 @@ export default function Home() {
                     </AccordionTrigger>
                     <AccordionContent>
                       {isLoading ? (
-                        <div>Loading subtopics...</div>
+                        <div>
+                          Loading subtopics...
+                        </div>
                       ) : (
                         <div>
                           {Object.entries(data.subtopics).map(([subtopic, units]) => (
@@ -430,15 +489,17 @@ export default function Home() {
                               <h3 className="font-semibold">{subtopic}</h3>
                               <ul className="list-none pl-4">
                                 {units.map(unit => (
-                                  <li key={unit.title} className="flex items-center mb-2">
-                                    <input
-                                      type="checkbox"
+                                  <li key={unit.title} className="flex items-center py-1">
+                                    <Checkbox
                                       id={`${subtopic}-${unit.title}`}
                                       checked={progress[`${subtopic}-${unit.title}`] || false}
-                                      onChange={() => toggleSubtopic(topic, subtopic, unit.title)}
+                                      onCheckedChange={() => {
+                                        toggleSubtopic(topic, subtopic, unit.title);
+                                        incrementStreak(); // Increment streak on checkbox change
+                                      }}
                                       className="mr-2"
                                     />
-                                    <label htmlFor={`${subtopic}-${unit.title}`} className="mr-2">
+                                    <label htmlFor={`${subtopic}-${unit.title}`} className="inline-block">
                                       {unit.title}
                                     </label>
                                     <span className="text-sm text-muted-foreground">({unit.explanation})</span>
