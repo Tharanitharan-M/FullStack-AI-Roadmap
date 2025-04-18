@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -216,7 +215,13 @@ export default function Home() {
   const { signIn } = useSignIn();
   const { signOut } = useSignOut();
   const handleSignIn = async () => {
-    await signIn();
+    await signIn().then(() => {
+      // After successful sign-in, retrieve and set the streak from localStorage
+      const storedStreak = localStorage.getItem('streak');
+      if (storedStreak) {
+        setStreak(parseInt(storedStreak));
+      }
+    });
   };
   const handleSignOut = async () => {
     await signOut();
@@ -362,6 +367,7 @@ export default function Home() {
                               type="checkbox"
                               checked={completedSubtopics(pillar).has(subtopic)}
                               onChange={() => toggleSubtopic(pillar, subtopic)}
+                              className="mr-2" // Added mr-2 class for spacing
                             />
                             <span>{subtopic}</span>
                           </label>
