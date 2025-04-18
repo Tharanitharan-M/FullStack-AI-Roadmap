@@ -606,7 +606,21 @@ function Home() {
               <CardDescription>Keep the momentum going</CardDescription>
             </CardHeader>
             <CardContent>
-              <Badge variant="secondary">Daily Streak: {streak} days</Badge>
+              <div className="flex flex-col items-center">
+                <Badge
+                  variant="accent"
+                  className="text-2xl px-6 py-3 rounded-full flex items-center gap-2 bg-yellow-400/90 text-orange-900 shadow-lg"
+                  style={{ fontWeight: 700, fontSize: "1.5rem" }}
+                >
+                  <span role="img" aria-label="fire" className="text-3xl animate-bounce">🔥</span>
+                  {streak} day{streak === 1 ? "" : "s"}
+                </Badge>
+                <span className="mt-2 text-sm text-orange-700 font-semibold">
+                  {streak > 0
+                    ? "You're on fire! Keep your streak alive! 🚀"
+                    : "Start your streak today!"}
+                </span>
+              </div>
             </CardContent>
           </Card>
 
